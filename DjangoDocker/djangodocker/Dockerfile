@@ -1,9 +1,9 @@
-FROM python:3.11.2
+FROM python:3.11-slim as build
 ENV PYTHONBUFFERED=1
 WORKDIR /code
 COPY requirements.txt .
-RUN pipenv install -r requirements.txt
 COPY . .
 EXPOSE 8000
-RUN pipenv shell
-CMD ["python","manage.py","runserver"]
+RUN pip install pipenv
+RUN pipenv install -r requirements.txt
+CMD ["pipenv", "run","python","manage.py","runserver"]
