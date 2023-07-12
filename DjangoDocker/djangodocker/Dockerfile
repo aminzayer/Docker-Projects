@@ -6,4 +6,4 @@ COPY . .
 EXPOSE 8000
 RUN pip install pipenv
 RUN pipenv install -r requirements.txt
-CMD ["pipenv", "run","python","manage.py","runserver"]
+CMD ["pipenv", "run","python","manage.py","runserver","0:8000"]
